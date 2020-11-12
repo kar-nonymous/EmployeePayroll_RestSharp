@@ -94,6 +94,7 @@ namespace RestSharpUnitTest
             employees.Add(new Employee { name = "Jobs", salary = "20000" });
             employees.ForEach(employee =>
             {
+                //Arrange
                 RestRequest request = new RestRequest("/employees", Method.POST);
                 JObject jObjectBody = new JObject();
                 jObjectBody.Add("name", employee.name);
@@ -111,6 +112,31 @@ namespace RestSharpUnitTest
                 Assert.AreEqual(employee.salary, dataResponse.salary);
                 System.Console.WriteLine(response.Content);
             });
+        }
+        /// <summary>
+        /// UC 4:
+        /// PUT api will update emplyee name and salary in the json file
+        /// </summary>
+        [TestMethod]
+        public void OnCallingPUTApi_ShouldUpdateEmployee()
+        {
+            //Arrange
+            RestRequest request = new RestRequest("/employees/1", Method.PUT);
+            JObject jObjectBody = new JObject();
+            jObjectBody.Add("name", "Rahul");
+            jObjectBody.Add("salary", "50000");
+
+            request.AddParameter("application/json", jObjectBody, ParameterType.RequestBody);
+
+            //Act
+            IRestResponse response = client.Execute(request);
+
+            //Assert
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            Employee dataResponse = JsonConvert.DeserializeObject<Employee>(response.Content);
+            Assert.AreEqual("Rahul", dataResponse.name);
+            Assert.AreEqual("50000", dataResponse.salary);
+            System.Console.WriteLine(response.Content);
         }
     }
 }
