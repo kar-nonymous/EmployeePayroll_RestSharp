@@ -138,5 +138,22 @@ namespace RestSharpUnitTest
             Assert.AreEqual("50000", dataResponse.salary);
             System.Console.WriteLine(response.Content);
         }
+        /// <summary>
+        /// UC 5:
+        /// DELETE api will delete employee in the json file
+        /// </summary>
+        [TestMethod]
+        public void OnCallingDELETEApi_ShouldDeleteEmployee()
+        {
+            //Arrange
+            RestRequest request = new RestRequest("/employees/2", Method.DELETE);
+
+            //Act
+            IRestResponse response = client.Execute(request);
+
+            //Assert
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.OK);
+            System.Console.WriteLine(response.Content);
+        }
     }
 }
