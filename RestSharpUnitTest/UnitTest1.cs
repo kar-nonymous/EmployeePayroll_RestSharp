@@ -82,5 +82,35 @@ namespace RestSharpUnitTest
             Assert.AreEqual("15000", dataResponse.salary);
             System.Console.WriteLine(response.Content);
         }
+        /// <summary>
+        /// UC 3:
+        /// POST api will add multiple employees to the json file created
+        /// </summary>
+        [TestMethod]
+        public void OnCallingPOSTApi_ShouldAddMultipleEmployee()
+        {
+            List<Employee> employees = new List<Employee>();
+            employees.Add(new Employee { name = "Peter", salary = "2000" });
+            employees.Add(new Employee { name = "Jobs", salary = "20000" });
+            employees.ForEach(employee =>
+            {
+                RestRequest request = new RestRequest("/employees", Method.POST);
+                JObject jObjectBody = new JObject();
+                jObjectBody.Add("name", employee.name);
+                jObjectBody.Add("salary", employee.salary);
+
+                request.AddParameter("application/json", jObjectBody, ParameterType.RequestBody);
+
+                //Act
+                IRestResponse response = client.Execute(request);
+
+                //Assert
+                Assert.AreEqual(response.StatusCode, HttpStatusCode.Created);
+                Employee dataResponse = JsonConvert.DeserializeObject<Employee>(response.Content);
+                Assert.AreEqual(employee.name, dataResponse.name);
+                Assert.AreEqual(employee.salary, dataResponse.salary);
+                System.Console.WriteLine(response.Content);
+            });
+        }
     }
 }
