@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EmployeePayroll_RestSharp", "EmployeePayroll_RestSharp\EmployeePayroll_RestSharp.csproj", "{A52619F9-9823-43F5-9EBB-B073FF6EBD40}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RestSharpUnitTest", "RestSharpUnitTest\RestSharpUnitTest.csproj", "{AFBE9184-328E-4A9D-AC2C-B5EF2879E6B7}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A52619F9-9823-43F5-9EBB-B073FF6EBD40}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A52619F9-9823-43F5-9EBB-B073FF6EBD40}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A52619F9-9823-43F5-9EBB-B073FF6EBD40}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A52619F9-9823-43F5-9EBB-B073FF6EBD40}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AFBE9184-328E-4A9D-AC2C-B5EF2879E6B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AFBE9184-328E-4A9D-AC2C-B5EF2879E6B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AFBE9184-328E-4A9D-AC2C-B5EF2879E6B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AFBE9184-328E-4A9D-AC2C-B5EF2879E6B7}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D55B3A7C-F29E-4BE4-A2FA-6EE5639D0484}
+	EndGlobalSection
+EndGlobal
