@@ -3,6 +3,7 @@ using RestSharp;
 using System.Net;
 using Newtonsoft.Json;
 using System.Collections.Generic;
+using Newtonsoft.Json.Linq;
 
 namespace RestSharpUnitTest
 {
@@ -55,6 +56,31 @@ namespace RestSharpUnitTest
             {
                 System.Console.WriteLine("ID: " + employee.id + " Name: " + employee.name + " Salary: " + employee.salary);
             }
+        }
+        /// <summary>
+        /// UC 2:
+        /// POST api will add employee provided to the json file created
+        /// </summary>
+        [TestMethod]
+        public void OnCallingPOSTApi_ShouldAddEmployee()
+        {
+            //Arrange
+            RestRequest request = new RestRequest("/employees", Method.POST);
+            JObject jObjectBody = new JObject();
+            jObjectBody.Add("name", "Clark");
+            jObjectBody.Add("salary", "15000");
+
+            request.AddParameter("application/json", jObjectBody, ParameterType.RequestBody);
+
+            //Act
+            IRestResponse response = client.Execute(request);
+
+            //Assert
+            Assert.AreEqual(response.StatusCode, HttpStatusCode.Created);
+            Employee dataResponse = JsonConvert.DeserializeObject<Employee>(response.Content);
+            Assert.AreEqual("Clark", dataResponse.name);
+            Assert.AreEqual("15000", dataResponse.salary);
+            System.Console.WriteLine(response.Content);
         }
     }
 }
